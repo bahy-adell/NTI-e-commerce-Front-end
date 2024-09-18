@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { BestsellerComponent } from '../bestseller/bestseller.component';
+import { BestSellersComponent } from "../best-sellers/best-sellers.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet ,BestsellerComponent],
+  imports: [BestSellersComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

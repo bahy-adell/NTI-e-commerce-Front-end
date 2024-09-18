@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -9,17 +9,18 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   isLogin: boolean = false;
-  constructor(private _AuthService: AuthService, private _Router: Router) {  }
-  logout() {
-    this._AuthService.logout();
-    this._Router.navigate(['/login'])
-  }
-  ngOnInit(): void {
-    this._AuthService.currentUser.subscribe(() => {
-      if (this._AuthService.currentUser.getValue() !== null) { this.isLogin = true }
+  constructor(private _AuthService: AuthService, private _Router: Router) {
+    // if (_AuthService.currentUser !== null) { this.isLogin = true }
+    // else { this.isLogin = false }
+    _AuthService.currentUser.subscribe(() => {
+      if (_AuthService.currentUser.getValue() !== null) { this.isLogin = true }
       else { this.isLogin = false }
     })
+  }
+  logout() {
+    this._AuthService.logout();
+    this._Router.navigate(['/home'])
   }
 }

@@ -1,105 +1,105 @@
 <!-- Section: Design Block -->
 <section class="text-center text-lg-start">
-    <style>
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
       .cascading-right {
-        margin-right: -50px;
+        margin-right: 0;
       }
-  
-      @media (max-width: 991.98px) {
-        .cascading-right {
-          margin-right: 0;
-        }
-      }
-    </style>
-  
-    <!-- Jumbotron -->
-    <div class="container py-4">
-      <div class="row g-0 align-items-center">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <div class="card cascading-right bg-body-tertiary" style="
-              backdrop-filter: blur(30px);
-              ">
-            <div class="card-body p-5 shadow-5 text-center">
-              <h2 class="fw-bold mb-5 fs-1 fw-bold text-primary">Sign up now</h2>
-              <form [formGroup]="signupForm" (ngSubmit)="signUP(signupForm)">
-                <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row">
-                  <div>
-                    <div data-mdb-input-init class="form-outline p-3">
-                      <input type="text" class="form-control" formControlName="name" placeholder="First name"/>
-                      @if(signupForm.get('name')?.errors!==null&&signupForm.get('name')?.touched){
-                        
-                          @if(signupForm.get('name')?.errors?.['required']){<span class="text-danger">name required</span>}
-                          @if(signupForm.get('name')?.errors?.['minlength']||signupForm.get('name')?.errors?.['maxlength'])
-                          {<span class="text-danger">length between 2,30</span>}
-                        
-                        }
-                    </div>
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right bg-body-tertiary" style="
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5 fs-1 fw-bold text-primary">Sign up now</h2>
+            <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm)">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div>
+                  <div data-mdb-input-init class="form-outline p-3">
+                    <input type="text" class="form-control" formControlName="name" placeholder="First name"/>
+                    @if(signupForm.get('name')?.errors!==null&&signupForm.get('name')?.touched){
+                      
+                        @if(signupForm.get('name')?.errors?.['required']){<span class="text-danger">name required</span>}
+                        @if(signupForm.get('name')?.errors?.['minlength']||signupForm.get('name')?.errors?.['maxlength'])
+                        {<span class="text-danger">length between 2,30</span>}
+                      
+                      }
                   </div>
                 </div>
-  
-                <!-- Email input -->
-                <div data-mdb-input-init class="form-outline p-3">
-                  <input type="email"  class="form-control" formControlName="email"  placeholder="Email@gmail.com"/>
-                  @if(signupForm.get('email')?.errors!==null&&signupForm.get('email')?.touched){
-                    
-                      @if(signupForm.get('email')?.errors?.['required']){<span class="text-danger">email required</span>}
-                      @if(signupForm.get('email')?.errors?.['email']){<span class="text-danger">invalid email</span>}
-                    
-                    }
-                    @if(emailErrors!==''){
-                      <span class="text-danger">{{emailErrors}}</span>
-                    }
-                    
-                </div>
-  
-                <!-- Password input -->
-                <div data-mdb-input-init class="form-outline p-3">
-                  <input type="password" class="form-control" formControlName="password" placeholder="password"/>
-                  @if(signupForm.get('password')?.errors!==null&&signupForm.get('password')?.touched){
-                    
-                      @if(signupForm.get('password')?.errors?.['required']){<span class="text-danger">password required</span>}
-                      @if(signupForm.get('password')?.errors?.['minlength']||signupForm.get('password')?.errors?.['maxlength'])
-                      {<span class="text-danger">password length between 6,20</span>}
-                    
-                    }
-                </div>
-                 <!-- confirm Password input -->
-                 <div data-mdb-input-init class="form-outline p-3">
-                  <input type="password" class="form-control" formControlName="confirmPassword" placeholder="confirm password"/>
-                  @if(signupForm.get('confirmPassword')?.errors!==null&&signupForm.get('confirmPassword')?.touched){
-                    
-                      @if(signupForm.get('confirmPassword')?.errors?.['required']){<span class="text-danger">confirm password required</span>}
+              </div>
 
-                      @if(signupForm.get('confirmPassword')?.errors?.['minlength']||signupForm.get('confirmPassword')?.errors?.['maxlength'])
-                      {<span class="text-danger">password length between 6,20</span>}
-                      @if(passwordErrors!==''){
-                        <span class="text-danger">{{passwordErrors}}</span>
-                      }
-                    
-                    }
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline p-3">
+                <input type="email"  class="form-control" formControlName="email"  placeholder="Email@gmail.com"/>
+                @if(signupForm.get('email')?.errors!==null&&signupForm.get('email')?.touched){
+                  
+                    @if(signupForm.get('email')?.errors?.['required']){<span class="text-danger">email required</span>}
+                    @if(signupForm.get('email')?.errors?.['email']){<span class="text-danger">invalid email</span>}
+                  
+                  }
+                  @if(emailErrors!==''){
+                    <span class="text-danger">{{emailErrors}}</span>
+                  }
+                  
+              </div>
+
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline p-3">
+                <input type="password" class="form-control" formControlName="password" placeholder="password"/>
+                @if(signupForm.get('password')?.errors!==null&&signupForm.get('password')?.touched){
+                  
+                    @if(signupForm.get('password')?.errors?.['required']){<span class="text-danger">password required</span>}
+                    @if(signupForm.get('password')?.errors?.['minlength']||signupForm.get('password')?.errors?.['maxlength'])
+                    {<span class="text-danger">password length between 6,20</span>}
+                  
+                  }
+              </div>
+               <!-- confirm Password input -->
+               <div data-mdb-input-init class="form-outline p-3">
+                <input type="password" class="form-control" formControlName="confirmPassword" placeholder="confirm password"/>
+                @if(signupForm.get('confirmPassword')?.errors!==null&&signupForm.get('confirmPassword')?.touched){
+                  
+                    @if(signupForm.get('confirmPassword')?.errors?.['required']){<span class="text-danger">confirm password required</span>}
+
+                    @if(signupForm.get('confirmPassword')?.errors?.['minlength']||signupForm.get('confirmPassword')?.errors?.['maxlength'])
+                    {<span class="text-danger">password length between 6,20</span>}
                     @if(passwordErrors!==''){
                       <span class="text-danger">{{passwordErrors}}</span>
                     }
-                   
-                </div>
-                <!-- Submit button -->
-                <button type="submit" [disabled]="signupForm.invalid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
-                  Sign up
-                </button>
-  
-              
-              </form>
-            </div>
+                  
+                  }
+                  @if(passwordErrors!==''){
+                    <span class="text-danger">{{passwordErrors}}</span>
+                  }
+                 
+              </div>
+              <!-- Submit button -->
+              <button type="submit" [disabled]="signupForm.invalid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                Sign up
+              </button>
+
+            
+            </form>
           </div>
         </div>
-  
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <img src="assets/signup.jpg" class="w-100 rounded-4 shadow-4"
-            alt="" />
-        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="assets/signup.jpg" class="w-100 rounded-4 shadow-4"
+          alt="" />
       </div>
     </div>
-    <!-- Jumbotron -->
-  </section>
-  <!-- Section: Design Block -->
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

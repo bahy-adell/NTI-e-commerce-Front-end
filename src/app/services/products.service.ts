@@ -1,24 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+  private hostName: string = ''
+  private routeName: string = ''
+  productImages: string = ``
+  constructor(private _HttpClient: HttpClient, private _GlobalService: GlobalService) {
+    this.hostName = this._GlobalService.hostName;
+    this.routeName = this._GlobalService.productsRoute;
+    this.productImages = this._GlobalService.productsImages;
+  }
 
-  constructor(private _httpClient:HttpClient) { }
-
-  private hostName: string = 'http://localhost:3010'
-  private routeName: string = '/api/v1/products'
-  imgDomain: string = `${this.hostName}/uploads/`
-  
-
-  getProducts(): Observable<any> {
-    return this._httpClient.get(`http://localhost:3010/api/v1/products`)
+  getProducts(limit: number = 16, page: number = 1, sort: string = '-createdAt', search: string): Observable<any> {
+    return this._HttpClient.get(`${this.hostName}${this.routeName}?limit=${limit}&page=${page}&sort=${sort}&search=${search}`)
   }
 
   getOneProduct(id: string): Observable<any> {
-    return this._httpClient.get(`${this.hostName}${this.routeName}/${id}`)
+    return this._HttpClient.get(`${this.hostName}${this.routeName}/${id}`)
   }
 }

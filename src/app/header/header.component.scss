@@ -1,0 +1,27 @@
+.logo {
+    font-size: 24px; /* Smaller, simple font size */
+    font-weight: 600; /* Semi-bold for simplicity */
+    color: #337fe2; /* Neutral dark color */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    cursor: pointer;
+}
+.navbar a {
+    color: rgb(0, 32, 102); /* White text for links */
+    text-decoration: none; /* Remove default underline */
+    font-size: 18px;
+    padding: 8px 12px;
+    
+}
+
+.navbar a:hover {
+    border-bottom: 2px solid white; /* Underline effect on hover */
+    transition: border-bottom 3s ease;
+    background-color:  #94b6e2;;
+    border-radius: 5%;
+    transition:  3s ease;
+}
